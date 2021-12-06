@@ -1,6 +1,6 @@
 [![Build Status](https://fluxera.visualstudio.com/Foundation/_apis/build/status/GitHub/Fluxera.Guards?branchName=main)](https://fluxera.visualstudio.com/Foundation/_build/latest?definitionId=57&branchName=main)
 
-# Guard
+# Guards
 
 An extendable guard implementation.
 
