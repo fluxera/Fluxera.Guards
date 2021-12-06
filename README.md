@@ -1,4 +1,4 @@
-[![Build Status](https://fluxera.visualstudio.com/Foundation/_apis/build/status/GitHub/Fluxera.Guards?branchName=main)](https://fluxera.visualstudio.com/Foundation/_build/latest?definitionId=57&branchName=main)
+[![Build Status](https://dev.azure.com/fluxera/Foundation/_apis/build/status/GitHub/fluxera.Fluxera.Guards?branchName=main)](https://dev.azure.com/fluxera/Foundation/_build/latest?definitionId=58&branchName=main)
 
 # Guards
 
