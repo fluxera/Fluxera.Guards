@@ -14,6 +14,12 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
+		<Version>6.0.0</Version>
+		<AssemblyVersion>6.0.0</AssemblyVersion>
+		<FileVersion>6.0.0</FileVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
 		<Authors>Matthias Gernand</Authors>
 		<RepositoryUrl>https://github.com/fluxera/Fluxera.Guard</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/fluxera/Fluxera.Guard</PackageProjectUrl>
@@ -22,6 +28,9 @@
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<IncludeSymbols>false</IncludeSymbols>
 		<NeutralLanguage>en</NeutralLanguage>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
 </Project>
