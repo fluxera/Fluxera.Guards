@@ -1,5 +1,5 @@
 ﻿// ReSharper disable once CheckNamespace
-namespace Fluxera.Guard
+namespace Fluxera.Guards
 {
 	// Note: Using the namespace 'Fluxera.Guard' will ensure that your
 	//       custom guard is available throughout your projects.

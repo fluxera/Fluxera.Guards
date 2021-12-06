@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Guard
+﻿namespace Fluxera.Guards
 {
 	using System;
 	using JetBrains.Annotations;

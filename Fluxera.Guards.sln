@@ -21,9 +21,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F18D2D58
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{35AAAE8E-EBED-402A-ACA7-969ED4824E4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Guard", "src\Fluxera.Guard\Fluxera.Guard.csproj", "{D22A91DC-5F14-4379-B38F-2F854B78FEB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Guards", "src\Fluxera.Guards\Fluxera.Guards.csproj", "{D22A91DC-5F14-4379-B38F-2F854B78FEB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Guard.UnitTests", "src\Fluxera.Guard.UnitTests\Fluxera.Guard.UnitTests.csproj", "{7DB0F190-9717-46A3-B20C-41B75A9213BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxera.Guards.UnitTests", "src\Fluxera.Guards.UnitTests\Fluxera.Guards.UnitTests.csproj", "{7DB0F190-9717-46A3-B20C-41B75A9213BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

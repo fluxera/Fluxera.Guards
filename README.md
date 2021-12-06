@@ -1,4 +1,4 @@
-[![Build Status](https://fluxera.visualstudio.com/Foundation/_apis/build/status/GitHub/Fluxera.Guard?branchName=main)](https://fluxera.visualstudio.com/Foundation/_build/latest?definitionId=57&branchName=main)
+[![Build Status](https://fluxera.visualstudio.com/Foundation/_apis/build/status/GitHub/Fluxera.Guards?branchName=main)](https://fluxera.visualstudio.com/Foundation/_build/latest?definitionId=57&branchName=main)
 
 # Guard
 
@@ -41,7 +41,7 @@ Create your own guards by adding extension methods on ```IGuard```. To create th
 
 ```c#
 // ReSharper disable once CheckNamespace
-namespace Fluxera.Guard
+namespace Fluxera.Guards
 {
     // Note: Using the namespace 'Fluxera.Guard' will ensure that your
     //       custom guard is available throughout your projects.

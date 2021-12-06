@@ -1,4 +1,4 @@
-﻿namespace Fluxera.Guard.UnitTests
+﻿namespace Fluxera.Guards.UnitTests
 {
 	using System;
 	using FluentAssertions;

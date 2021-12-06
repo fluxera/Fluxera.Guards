@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fluxera.Guard\Fluxera.Guard.csproj" />
+    <ProjectReference Include="..\Fluxera.Guards\Fluxera.Guards.csproj" />
   </ItemGroup>
 
 </Project>
