@@ -10,12 +10,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Against.NegativeOrZero.cs\**" />
-	  <EmbeddedResource Remove="Against.NegativeOrZero.cs\**" />
-	  <None Remove="Against.NegativeOrZero.cs\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Compile Include="..\SolutionInfo.cs" Link="Properties\SolutionInfo.cs" />
 	</ItemGroup>
 
