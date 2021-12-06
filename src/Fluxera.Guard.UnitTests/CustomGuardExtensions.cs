@@ -1,10 +1,15 @@
-﻿namespace Fluxera.Guard.UnitTests
+﻿// ReSharper disable once CheckNamespace
+namespace Fluxera.Guard
 {
+	// Note: Using the namespace 'Fluxera.Guard' will ensure that your
+	//       custom guard is available throughout your projects.
+
+	using JetBrains.Annotations;
 	using static ExceptionHelpers;
 
 	public static class CustomGuardExtensions
 	{
-		public static void Hello(this IGuard guard, string input, string parameterName, string? message = null)
+		public static void Hello(this IGuard guard, string input, [InvokerParameterName] string parameterName, string? message = null)
 		{
 			if(input.ToLower() == "hello")
 			{

@@ -22,7 +22,7 @@
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is zero.</exception>
 		public static byte Zero(this IGuard guard, byte input, [InvokerParameterName] string parameterName, string? message = null)
 		{
-			return CheckZero(input, parameterName, message);
+			return Zero(input, parameterName, message);
 		}
 
 		/// <summary>
@@ -36,7 +36,7 @@
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is zero.</exception>
 		public static short Zero(this IGuard guard, short input, [InvokerParameterName] string parameterName, string? message = null)
 		{
-			return CheckZero(input, parameterName, message);
+			return Zero(input, parameterName, message);
 		}
 
 		/// <summary>
@@ -50,7 +50,7 @@
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is zero.</exception>
 		public static int Zero(this IGuard guard, int input, [InvokerParameterName] string parameterName, string? message = null)
 		{
-			return CheckZero(input, parameterName, message);
+			return Zero(input, parameterName, message);
 		}
 
 		/// <summary>
@@ -64,7 +64,7 @@
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is zero.</exception>
 		public static long Zero(this IGuard guard, long input, [InvokerParameterName] string parameterName, string? message = null)
 		{
-			return CheckZero(input, parameterName, message);
+			return Zero(input, parameterName, message);
 		}
 
 		/// <summary>
@@ -78,7 +78,7 @@
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is zero.</exception>
 		public static decimal Zero(this IGuard guard, decimal input, [InvokerParameterName] string parameterName, string? message = null)
 		{
-			return CheckZero(input, parameterName, message);
+			return Zero(input, parameterName, message);
 		}
 
 		/// <summary>
@@ -92,7 +92,7 @@
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is zero.</exception>
 		public static float Zero(this IGuard guard, float input, [InvokerParameterName] string parameterName, string? message = null)
 		{
-			return CheckZero(input, parameterName, message);
+			return Zero(input, parameterName, message);
 		}
 
 		/// <summary>
@@ -106,7 +106,7 @@
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is zero.</exception>
 		public static double Zero(this IGuard guard, double input, [InvokerParameterName] string parameterName, string? message = null)
 		{
-			return CheckZero(input, parameterName, message);
+			return Zero(input, parameterName, message);
 		}
 
 		/// <summary>
@@ -120,13 +120,13 @@
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is zero.</exception>
 		public static TimeSpan Zero(this IGuard guard, TimeSpan input, [InvokerParameterName] string parameterName, string? message = null)
 		{
-			return CheckZero(input, parameterName, message);
+			return Zero(input, parameterName, message);
 		}
 
 		/// <summary>
 		///     Checks if the input is zero.
 		/// </summary>
-		private static T CheckZero<T>(T input, string parameterName, string? message = null)
+		private static T Zero<T>(T input, string parameterName, string? message = null)
 			where T : struct, IComparable, IComparable<T>
 		{
 			if(EqualityComparer<T>.Default.Equals(input, default))
