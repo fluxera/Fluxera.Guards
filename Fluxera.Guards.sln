@@ -19,8 +19,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DF28D730-99B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F18D2D58-282C-4D93-8D9A-3A76CF98F018}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{35AAAE8E-EBED-402A-ACA7-969ED4824E4A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Guards", "src\Fluxera.Guards\Fluxera.Guards.csproj", "{D22A91DC-5F14-4379-B38F-2F854B78FEB7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxera.Guards.UnitTests", "tests\Fluxera.Guards.UnitTests\Fluxera.Guards.UnitTests.csproj", "{389321E6-9FAA-40D5-9839-92AF72E5D737}"
