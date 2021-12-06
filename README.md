@@ -4,8 +4,7 @@
 
 An extendable guard implementation.
 
-A guard clause helps to check inputs for validity and fails immediately if any invalid inputs are found.
-The guard clauses are implemented as extension methods on the marker ```IGuard```. This way custom guards
+A guard clause helps to check inputs for validity and fails immediately if any invalid inputs are found. The guards are implemented as extension methods on the marker ```IGuard```. This way custom guards
 can be added to the available default guard clauses.
 
 ## Usage
@@ -21,8 +20,7 @@ public void UpdateCustomer(Customer customer)
 }
 ```
 
-Check inputs constructors, fail early or assign the value. The guard will fail with an exception if the input is not valid 
-or return the input value if it is valid.
+Check inputs constructors, fail early or assign the value. The guard will fail with an exception if the input is not valid or return the input value if it is valid.
 
 ```c#
 public class Customer
@@ -39,9 +37,7 @@ public class Customer
 }
 ```
 
-Create your own guards by adding extension methods on ```IGuard```. To create the exception to throw
-you can use one of the helpers from the ```ExceptionHelpers``` class. This helpers make sure that
-the correct constructors are used and the parameter name is set correctly.
+Create your own guards by adding extension methods on ```IGuard```. To create the exception to throw you can use one of the helpers from the ```ExceptionHelpers``` class. This helpers make sure that the correct constructors are used and the parameter name is set correctly.
 
 ```c#
 // ReSharper disable once CheckNamespace
