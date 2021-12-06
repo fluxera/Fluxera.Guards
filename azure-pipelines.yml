@@ -107,6 +107,6 @@ stages:
         command: 'push'
         packagesToPush: '$(System.ArtifactsDirectory)/**/*.nupkg'
         nuGetFeedType: 'external'
-        publishFeedCredentials: 'Fluxera'
+        publishFeedCredentials: 'Foundation'
         verbosityRestore: Normal
         includesymbols: false
