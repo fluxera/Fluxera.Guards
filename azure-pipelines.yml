@@ -104,9 +104,15 @@ stages:
       condition: not(contains(variables['Build.BuildNumber'], '-ci'))
       displayName: 'NuGet Push Packages'
       inputs:
-        command: 'push'
-        packagesToPush: '$(System.ArtifactsDirectory)/**/*.nupkg'
-        nuGetFeedType: 'external'
-        publishFeedCredentials: 'Foundation'
-        verbosityRestore: Normal
-        includesymbols: false
+        command: custom
+        custom: nuget
+        arguments: >
+          push $(System.ArtifactsDirectory)/**/*.nupkg
+          -s https://api.nuget.org/v3/index.json
+          -k $(NuGetApiKey)
+        #command: 'push'
+        #packagesToPush: '$(System.ArtifactsDirectory)/**/*.nupkg'
+        #nuGetFeedType: 'external'
+        #publishFeedCredentials: 'Foundation'
+        #verbosityRestore: Normal
+        #includesymbols: false
