@@ -99,6 +99,7 @@ stages:
         artifactName: 'drop'
         downloadPath: '$(System.ArtifactsDirectory)'
     # Publish the NuGet packages to the package feed.
+    # https://www.programmingwithwolfgang.com/azure-devops-publish-nuget/
     - task: DotNetCoreCLI@2
       condition: not(contains(variables['Build.BuildNumber'], '-ci'))
       displayName: 'NuGet Push Packages'
