@@ -19,7 +19,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative.</exception>
-		public static byte Negative(this IGuard guard, byte input, [InvokerParameterName] string parameterName, string? message = null)
+		public static byte Negative(this IGuard guard, byte input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			return Negative(input, parameterName, message);
 		}
@@ -33,7 +33,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative.</exception>
-		public static short Negative(this IGuard guard, short input, [InvokerParameterName] string parameterName, string? message = null)
+		public static short Negative(this IGuard guard, short input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			return Negative(input, parameterName, message);
 		}
@@ -47,7 +47,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative.</exception>
-		public static int Negative(this IGuard guard, int input, [InvokerParameterName] string parameterName, string? message = null)
+		public static int Negative(this IGuard guard, int input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			return Negative(input, parameterName, message);
 		}
@@ -61,7 +61,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative.</exception>
-		public static long Negative(this IGuard guard, long input, [InvokerParameterName] string parameterName, string? message = null)
+		public static long Negative(this IGuard guard, long input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			return Negative(input, parameterName, message);
 		}
@@ -75,7 +75,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative.</exception>
-		public static decimal Negative(this IGuard guard, decimal input, [InvokerParameterName] string parameterName, string? message = null)
+		public static decimal Negative(this IGuard guard, decimal input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			return Negative(input, parameterName, message);
 		}
@@ -89,7 +89,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative.</exception>
-		public static float Negative(this IGuard guard, float input, [InvokerParameterName] string parameterName, string? message = null)
+		public static float Negative(this IGuard guard, float input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			return Negative(input, parameterName, message);
 		}
@@ -103,7 +103,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative.</exception>
-		public static double Negative(this IGuard guard, double input, [InvokerParameterName] string parameterName, string? message = null)
+		public static double Negative(this IGuard guard, double input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			return Negative(input, parameterName, message);
 		}
@@ -117,7 +117,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative.</exception>
-		public static TimeSpan Negative(this IGuard guard, TimeSpan input, [InvokerParameterName] string parameterName, string? message = null)
+		public static TimeSpan Negative(this IGuard guard, TimeSpan input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			return Negative(input, parameterName, message);
 		}
@@ -125,7 +125,7 @@
 		/// <summary>
 		///     Checks if the input is negative.
 		/// </summary>
-		private static T Negative<T>(T input, string parameterName, string? message = null)
+		private static T Negative<T>(T input, string parameterName, string message = null)
 			where T : struct, IComparable, IComparable<T>
 		{
 			if(input.CompareTo(default) < 0)

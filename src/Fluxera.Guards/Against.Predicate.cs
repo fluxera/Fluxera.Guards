@@ -24,7 +24,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:false => halt")]
-		public static bool False(this IGuard guard, bool input, [InvokerParameterName] string parameterName, string? message = null)
+		public static bool False(this IGuard guard, bool input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			if(!input)
 			{
@@ -46,7 +46,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:true => halt")]
-		public static bool True(this IGuard guard, bool input, [InvokerParameterName] string parameterName, string? message = null)
+		public static bool True(this IGuard guard, bool input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			if(input)
 			{
@@ -71,7 +71,7 @@
 		///     Thrown if <paramref name="input" /> doesn't satisfy the
 		///     <paramref name="predicate" /> function.
 		/// </exception>
-		public static T InvalidInput<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, Predicate<T> predicate, string? message = null)
+		public static T InvalidInput<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, Predicate<T> predicate, string message = null)
 		{
 			if(!predicate(input))
 			{
@@ -95,7 +95,7 @@
 		///     Thrown if <paramref name="input" /> doesn't match the
 		///     <paramref name="regexPattern" />.
 		/// </exception>
-		public static string InvalidFormat(this IGuard guard, string input, [InvokerParameterName] string parameterName, [RegexPattern] string regexPattern, string? message = null)
+		public static string InvalidFormat(this IGuard guard, string input, [InvokerParameterName] string parameterName, [RegexPattern] string regexPattern, string message = null)
 		{
 			if(input != Regex.Match(input, regexPattern).Value)
 			{

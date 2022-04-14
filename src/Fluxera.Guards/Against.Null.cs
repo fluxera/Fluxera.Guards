@@ -26,7 +26,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static T Null<T>(this IGuard guard, T? input, [InvokerParameterName] string parameterName, string? message = null)
+		public static T Null<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			if(input is null)
 			{
@@ -37,7 +37,7 @@
 		}
 
 		/// <summary>
-		///		Throws an <see cref="ArgumentException" /> if <paramref name="input" /> is default for that type.
+		///     Throws an <see cref="ArgumentException" /> if <paramref name="input" /> is default for that type.
 		/// </summary>
 		/// <typeparam name="T">The type of the input.</typeparam>
 		/// <param name="guard">The extension endpoint.</param>
@@ -49,9 +49,9 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static T Default<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, string? message = null)
+		public static T Default<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, string message = null)
 		{
-			if (EqualityComparer<T>.Default.Equals(input, default!) || input is null)
+			if(EqualityComparer<T>.Default.Equals(input, default!) || input is null)
 			{
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be default.");
 			}
@@ -73,7 +73,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static string NullOrEmpty(this IGuard guard, string? input, [InvokerParameterName] string parameterName, string? message = null)
+		public static string NullOrEmpty(this IGuard guard, string input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			Guard.Against.Null(input, parameterName);
 			if(string.IsNullOrEmpty(input))
@@ -98,7 +98,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static string NullOrWhiteSpace(this IGuard guard, string? input, [InvokerParameterName] string parameterName, string? message = null)
+		public static string NullOrWhiteSpace(this IGuard guard, string input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			Guard.Against.NullOrEmpty(input, parameterName);
 			if(string.IsNullOrWhiteSpace(input))
@@ -121,7 +121,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static Guid Empty(this IGuard guard, Guid input, [InvokerParameterName] string parameterName, string? message = null)
+		public static Guid Empty(this IGuard guard, Guid input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			if(input == Guid.Empty)
 			{
@@ -145,7 +145,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static Guid NullOrEmpty(this IGuard guard, Guid? input, [InvokerParameterName] string parameterName, string? message = null)
+		public static Guid NullOrEmpty(this IGuard guard, Guid? input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			Guard.Against.Null(input, parameterName);
 			Guard.Against.Empty(input!.Value, parameterName);
@@ -154,8 +154,8 @@
 		}
 
 		/// <summary>
-		///		Throws an <see cref="ArgumentNullException" /> if <paramref name="input" /> is null. <br/>
-		///		Throws an <see cref="ArgumentException" /> if <paramref name="input" /> is an empty enumerable.
+		///     Throws an <see cref="ArgumentNullException" /> if <paramref name="input" /> is null. <br />
+		///     Throws an <see cref="ArgumentException" /> if <paramref name="input" /> is an empty enumerable.
 		/// </summary>
 		/// <param name="guard">The extension endpoint.</param>
 		/// <param name="input">The value of the input's items.</param>
@@ -167,7 +167,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static IEnumerable<T> NullOrEmpty<T>(this IGuard guard, IEnumerable<T>? input, [InvokerParameterName] string parameterName, string? message = null)
+		public static IEnumerable<T> NullOrEmpty<T>(this IGuard guard, IEnumerable<T> input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			// ReSharper disable PossibleMultipleEnumeration
 			Guard.Against.Null(input, parameterName);
