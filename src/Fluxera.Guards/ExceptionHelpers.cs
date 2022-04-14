@@ -12,7 +12,7 @@
 		/// <summary>
 		///     Helper to create an instance of <see cref="ArgumentNullException" />.
 		/// </summary>
-		public static ArgumentNullException CreateArgumentNullException(string parameterName, string? message)
+		public static ArgumentNullException CreateArgumentNullException(string parameterName, string message)
 		{
 			parameterName = EnsureParameterName(parameterName);
 
@@ -24,7 +24,7 @@
 		/// <summary>
 		///     Helper to create an instance of <see cref="ArgumentException" />.
 		/// </summary>
-		public static ArgumentException CreateArgumentException(string parameterName, string? message)
+		public static ArgumentException CreateArgumentException(string parameterName, string message)
 		{
 			parameterName = EnsureParameterName(parameterName);
 
@@ -36,7 +36,7 @@
 		/// <summary>
 		///     Helper to create an instance of <see cref="ArgumentOutOfRangeException" />.
 		/// </summary>
-		public static ArgumentOutOfRangeException CreateArgumentOutOfRangeException(string parameterName, string? message)
+		public static ArgumentOutOfRangeException CreateArgumentOutOfRangeException(string parameterName, string message)
 		{
 			parameterName = EnsureParameterName(parameterName);
 
@@ -48,7 +48,7 @@
 		/// <summary>
 		///     Helper to create an instance of <see cref="InvalidEnumArgumentException" />.
 		/// </summary>
-		public static InvalidEnumArgumentException CreateInvalidEnumArgumentException<T>(T input, string parameterName, string? message)
+		public static InvalidEnumArgumentException CreateInvalidEnumArgumentException<T>(T input, string parameterName, string message)
 			where T : struct, Enum
 		{
 			parameterName = EnsureParameterName(parameterName);
@@ -61,7 +61,7 @@
 		/// <summary>
 		///     Helper to create an instance of <see cref="InvalidEnumArgumentException" />.
 		/// </summary>
-		public static InvalidEnumArgumentException CreateInvalidEnumArgumentException<T>(int input, string parameterName, string? message)
+		public static InvalidEnumArgumentException CreateInvalidEnumArgumentException<T>(int input, string parameterName, string message)
 			where T : struct, Enum
 		{
 			parameterName = EnsureParameterName(parameterName);

@@ -29,7 +29,7 @@
 		///     Thrown if <paramref name="input" /> &lt; <paramref name="from" /> or
 		///     <paramref name="input" /> &gt; <paramref name="to" />.
 		/// </exception>
-		public static T OutOfRange<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, T from, T to, string? message = null)
+		public static T OutOfRange<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, T from, T to, string message = null)
 			where T : IComparable, IComparable<T>
 		{
 			if(from.CompareTo(to) > 0)
@@ -55,7 +55,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="InvalidEnumArgumentException">Thrown if <paramref name="input" /> is not a valid enum value.</exception>
-		public static T OutOfRange<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, string? message = null)
+		public static T OutOfRange<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, string message = null)
 			where T : struct, Enum
 		{
 			if(!Enum.IsDefined(typeof(T), input))
@@ -76,7 +76,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="InvalidEnumArgumentException">Thrown if <paramref name="input" /> is not a valid enum value.</exception>
-		public static int OutOfRange<T>(this IGuard guard, int input, [InvokerParameterName] string parameterName, string? message = null)
+		public static int OutOfRange<T>(this IGuard guard, int input, [InvokerParameterName] string parameterName, string message = null)
 			where T : struct, Enum
 		{
 			if(!Enum.IsDefined(typeof(T), input))
