@@ -4,6 +4,7 @@
 	using System.Collections.Generic;
 	using System.Diagnostics;
 	using System.Linq;
+	using System.Runtime.CompilerServices;
 	using JetBrains.Annotations;
 	using static ExceptionHelpers;
 
@@ -26,7 +27,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static T Null<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, string message = null)
+		public static T Null<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			if(input is null)
 			{
@@ -49,7 +50,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static T Default<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, string message = null)
+		public static T Default<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			if(EqualityComparer<T>.Default.Equals(input, default!) || input is null)
 			{
@@ -73,7 +74,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static string NullOrEmpty(this IGuard guard, string input, [InvokerParameterName] string parameterName, string message = null)
+		public static string NullOrEmpty(this IGuard guard, string input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			Guard.Against.Null(input, parameterName);
 			if(string.IsNullOrEmpty(input))
@@ -98,7 +99,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static string NullOrWhiteSpace(this IGuard guard, string input, [InvokerParameterName] string parameterName, string message = null)
+		public static string NullOrWhiteSpace(this IGuard guard, string input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			Guard.Against.NullOrEmpty(input, parameterName);
 			if(string.IsNullOrWhiteSpace(input))
@@ -121,7 +122,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static Guid Empty(this IGuard guard, Guid input, [InvokerParameterName] string parameterName, string message = null)
+		public static Guid Empty(this IGuard guard, Guid input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			if(input == Guid.Empty)
 			{
@@ -145,7 +146,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static Guid NullOrEmpty(this IGuard guard, Guid? input, [InvokerParameterName] string parameterName, string message = null)
+		public static Guid NullOrEmpty(this IGuard guard, Guid? input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			Guard.Against.Null(input, parameterName);
 			Guard.Against.Empty(input!.Value, parameterName);
@@ -167,7 +168,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static IEnumerable<T> NullOrEmpty<T>(this IGuard guard, IEnumerable<T> input, [InvokerParameterName] string parameterName, string message = null)
+		public static IEnumerable<T> NullOrEmpty<T>(this IGuard guard, IEnumerable<T> input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			// ReSharper disable PossibleMultipleEnumeration
 			Guard.Against.Null(input, parameterName);

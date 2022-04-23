@@ -10,6 +10,44 @@
 	public class AgainstNullTests
 	{
 		[Test]
+		public void ShouldDoNothingWhenNotDefault()
+		{
+			Guard.Against.Default(string.Empty, "string");
+			Guard.Against.Default(1, "int");
+			Guard.Against.Default(Guid.NewGuid(), "guid");
+			Guard.Against.Default(DateTime.MaxValue, "datetime");
+			Guard.Against.Default(new object(), "object");
+		}
+
+		[Test]
+		public void ShouldDoNothingWhenNotEmptyEnumerable()
+		{
+			Guard.Against.NullOrEmpty(new List<string> { "hello", "world" }, "enumerable");
+			Guard.Against.NullOrEmpty(new string[] { "hello", "world" }, "enumerable");
+		}
+
+		[Test]
+		public void ShouldDoNothingWhenNotEmptyGuid()
+		{
+			Guard.Against.NullOrEmpty(Guid.NewGuid(), "guid");
+		}
+
+		[Test]
+		public void ShouldDoNothingWhenNotEmptyOrWhitespaceString()
+		{
+			Guard.Against.NullOrWhiteSpace("hello", "string");
+			Guard.Against.NullOrWhiteSpace("hello world", "string");
+			Guard.Against.NullOrWhiteSpace(" leading whitespace", "string");
+			Guard.Against.NullOrWhiteSpace("trailing whitespace ", "string");
+		}
+
+		[Test]
+		public void ShouldDoNothingWhenNotEmptyString()
+		{
+			Guard.Against.NullOrEmpty("hello", "string");
+		}
+
+		[Test]
 		public void ShouldDoNothingWhenNotNull()
 		{
 			Guard.Against.Null(string.Empty, "string");
@@ -20,20 +58,56 @@
 		}
 
 		[Test]
-		public void ShouldThrowWhenNull()
+		public void ShouldReturnInputOnSuccessDefault()
 		{
-			Action action = () => Guard.Against.Null((object?)null, "object");
-			action.Should().Throw<ArgumentNullException>();
+			Guard.Against.Default(string.Empty, "string").Should().Be(string.Empty);
+			Guard.Against.Default(1, "int").Should().Be(1);
+
+			Guid guid = Guid.NewGuid();
+			Guard.Against.Default(guid).Should().Be(guid);
+
+			DateTime now = DateTime.Now;
+			Guard.Against.Default(now, "datetime").Should().Be(now);
+
+			object obj = new object();
+			Guard.Against.Default(obj, "object").Should().Be(obj);
 		}
 
 		[Test]
-		public void ShouldDoNothingWhenNotDefault()
+		public void ShouldReturnInputOnSuccessNull()
 		{
-			Guard.Against.Default(string.Empty, "string");
-			Guard.Against.Default(1, "int");
-			Guard.Against.Default(Guid.NewGuid(), "guid");
-			Guard.Against.Default(DateTime.MaxValue, "datetime");
-			Guard.Against.Default(new object(), "object");
+			Guard.Against.Null(string.Empty, "string").Should().Be(string.Empty);
+			Guard.Against.Null(1, "int").Should().Be(1);
+
+			Guid guid = Guid.NewGuid();
+			Guard.Against.Null(guid).Should().Be(guid);
+
+			DateTime now = DateTime.Now;
+			Guard.Against.Null(now, "datetime").Should().Be(now);
+
+			object obj = new object();
+			Guard.Against.Null(obj, "object").Should().Be(obj);
+		}
+
+		[Test]
+		public void ShouldReturnInputOnSuccessNullOrEmpty()
+		{
+			Guard.Against.NullOrEmpty("hello", "string").Should().Be("hello");
+
+			Guid guid = Guid.NewGuid();
+			Guard.Against.NullOrEmpty(guid).Should().Be(guid);
+
+			IList<string> enumerable = new List<string> { "hello", "world" };
+			Guard.Against.NullOrEmpty(enumerable).Should().BeEquivalentTo(enumerable);
+		}
+
+		[Test]
+		public void ShouldReturnInputOnSuccessNullOrWhitespace()
+		{
+			Guard.Against.NullOrWhiteSpace("hello", "string").Should().Be("hello");
+			Guard.Against.NullOrWhiteSpace("hello world", "string").Should().Be("hello world");
+			Guard.Against.NullOrWhiteSpace(" leading whitespace", "string").Should().Be(" leading whitespace");
+			Guard.Against.NullOrWhiteSpace("trailing whitespace ", "string").Should().Be("trailing whitespace ");
 		}
 
 		[Test]
@@ -56,143 +130,77 @@
 		}
 
 		[Test]
-		public void ShouldDoNothingWhenNotEmptyString()
+		public void ShouldThrowWhenEmptyEnumerable()
 		{
-			Guard.Against.NullOrEmpty("hello", "string");
-		}
-
-		[Test]
-		public void ShouldDoNothingWhenNotEmptyGuid()
-		{
-			Guard.Against.NullOrEmpty(Guid.NewGuid(), "guid");
-		}
-
-		[Test]
-		public void ShouldDoNothingWhenNotEmptyEnumerable()
-		{
-			Guard.Against.NullOrEmpty(new List<string> { "hello", "world" }, "enumerable");
-			Guard.Against.NullOrEmpty(new string[] { "hello", "world" }, "enumerable");
-		}
-
-		[Test]
-		public void ShouldThrowWhenNullString()
-		{
-			Action action = () => Guard.Against.NullOrEmpty((string?)null, "string");
-			action.Should().Throw<ArgumentNullException>();
-		}
-
-		[Test]
-		public void ShouldThrowWhenEmptyString()
-		{
-			Action action = () => Guard.Against.NullOrEmpty(string.Empty, "string");
-			action.Should().Throw<ArgumentException>();
-		}
-
-		[Test]
-		public void ShouldThrowWhenNullGuid()
-		{
-			Action action = () => Guard.Against.NullOrEmpty((Guid?)null, "guid");
-			action.Should().Throw<ArgumentNullException>();
+			Action action = () => Guard.Against.NullOrEmpty(Enumerable.Empty<string>(), "enumerable");
+			action.Should().Throw<ArgumentException>().WithParameterName("enumerable");
 		}
 
 		[Test]
 		public void ShouldThrowWhenEmptyGuid()
 		{
 			Action action = () => Guard.Against.NullOrEmpty(Guid.Empty, "guid");
-			action.Should().Throw<ArgumentException>();
+			action.Should().Throw<ArgumentException>().WithParameterName("guid");
 		}
 
 		[Test]
-		public void ShouldThrowWhenEmptyEnumerable()
+		public void ShouldThrowWhenEmptyString()
 		{
-			Action action = () => Guard.Against.NullOrEmpty(Enumerable.Empty<string>(), "enumerable");
-			action.Should().Throw<ArgumentException>();
-		}
-
-		[Test]
-		public void ShouldDoNothingWhenNotEmptyOrWhitespaceString()
-		{
-			Guard.Against.NullOrWhiteSpace("hello", "string");
-			Guard.Against.NullOrWhiteSpace("hello world", "string");
-			Guard.Against.NullOrWhiteSpace(" leading whitespace", "string");
-			Guard.Against.NullOrWhiteSpace("trailing whitespace ", "string");
-		}
-
-		[Test]
-		public void ShouldThrowWhenNullStringNullOrWhiteSpace()
-		{
-			Action action = () => Guard.Against.NullOrWhiteSpace((string?)null, "string");
-			action.Should().Throw<ArgumentNullException>();
+			Action action = () => Guard.Against.NullOrEmpty(string.Empty, "string");
+			action.Should().Throw<ArgumentException>().WithParameterName("string");
 		}
 
 		[Test]
 		public void ShouldThrowWhenEmptyStringNullOrWhiteSpace()
 		{
 			Action action = () => Guard.Against.NullOrWhiteSpace(string.Empty, "string");
-			action.Should().Throw<ArgumentException>();
+			action.Should().Throw<ArgumentException>().WithParameterName("string");
+		}
+
+		[Test]
+		public void ShouldThrowWhenNull()
+		{
+			Action action = () => Guard.Against.Null((object?)null, "object");
+			action.Should().Throw<ArgumentNullException>().WithParameterName("object");
+		}
+
+		[Test]
+		public void ShouldThrowWhenNull_WithCallerArgumentExpression()
+		{
+			object obj = null;
+			Action action = () => Guard.Against.Null(obj);
+			action.Should().Throw<ArgumentNullException>().WithParameterName("obj");
+		}
+
+		[Test]
+		public void ShouldThrowWhenNullGuid()
+		{
+			Action action = () => Guard.Against.NullOrEmpty((Guid?)null, "guid");
+			action.Should().Throw<ArgumentNullException>().WithParameterName("guid");
+		}
+
+		[Test]
+		public void ShouldThrowWhenNullString()
+		{
+			Action action = () => Guard.Against.NullOrEmpty((string?)null, "string");
+			action.Should().Throw<ArgumentNullException>().WithParameterName("string");
+		}
+
+		[Test]
+		public void ShouldThrowWhenNullStringNullOrWhiteSpace()
+		{
+			Action action = () => Guard.Against.NullOrWhiteSpace(null, "string");
+			action.Should().Throw<ArgumentNullException>().WithParameterName("string");
 		}
 
 		[Test]
 		public void ShouldThrowWhenWhiteSpaceString()
 		{
 			Action actionSingle = () => Guard.Against.NullOrWhiteSpace(" ", "string");
-			actionSingle.Should().Throw<ArgumentException>();
+			actionSingle.Should().Throw<ArgumentException>().WithParameterName("string");
 
 			Action actionMultiple = () => Guard.Against.NullOrWhiteSpace("   ", "string");
-			actionMultiple.Should().Throw<ArgumentException>();
-		}
-
-		[Test]
-		public void ShouldReturnInputOnSuccessNull()
-		{
-			Guard.Against.Null(string.Empty, "string").Should().Be(string.Empty);
-			Guard.Against.Null(1, "int").Should().Be(1);
-
-			Guid guid = Guid.NewGuid();
-			Guard.Against.Null(guid, "guid").Should().Be(guid);
-
-			DateTime now = DateTime.Now;
-			Guard.Against.Null(now, "datetime").Should().Be(now);
-
-			object obj = new object();
-			Guard.Against.Null(obj, "object").Should().Be(obj);
-		}
-
-		[Test]
-		public void ShouldReturnInputOnSuccessDefault()
-		{
-			Guard.Against.Default(string.Empty, "string").Should().Be(string.Empty);
-			Guard.Against.Default(1, "int").Should().Be(1);
-
-			Guid guid = Guid.NewGuid();
-			Guard.Against.Default(guid, "guid").Should().Be(guid);
-
-			DateTime now = DateTime.Now;
-			Guard.Against.Default(now, "datetime").Should().Be(now);
-
-			object obj = new object();
-			Guard.Against.Default(obj, "object").Should().Be(obj);
-		}
-
-		[Test]
-		public void ShouldReturnInputOnSuccessNullOrEmpty()
-		{
-			Guard.Against.NullOrEmpty("hello", "string").Should().Be("hello");
-
-			Guid guid = Guid.NewGuid();
-			Guard.Against.NullOrEmpty(guid, "guid").Should().Be(guid);
-
-			IList<string> enumerable = new List<string> { "hello", "world" };
-			Guard.Against.NullOrEmpty(enumerable, "enumerable").Should().BeEquivalentTo(enumerable);
-		}
-
-		[Test]
-		public void ShouldReturnInputOnSuccessNullOrWhitespace()
-		{
-			Guard.Against.NullOrWhiteSpace("hello", "string").Should().Be("hello");
-			Guard.Against.NullOrWhiteSpace("hello world", "string").Should().Be("hello world");
-			Guard.Against.NullOrWhiteSpace(" leading whitespace", "string").Should().Be(" leading whitespace");
-			Guard.Against.NullOrWhiteSpace("trailing whitespace ", "string").Should().Be("trailing whitespace ");
+			actionMultiple.Should().Throw<ArgumentException>().WithParameterName("string");
 		}
 	}
 }
