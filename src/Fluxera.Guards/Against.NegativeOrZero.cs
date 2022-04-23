@@ -1,6 +1,7 @@
 ﻿namespace Fluxera.Guards
 {
 	using System;
+	using System.Runtime.CompilerServices;
 	using JetBrains.Annotations;
 	using static ExceptionHelpers;
 
@@ -19,7 +20,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative or zero.</exception>
-		public static byte NegativeOrZero(this IGuard guard, byte input, [InvokerParameterName] string parameterName, string message = null)
+		public static byte NegativeOrZero(this IGuard guard, byte input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			return NegativeOrZero(input, parameterName, message);
 		}
@@ -33,7 +34,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative or zero.</exception>
-		public static short NegativeOrZero(this IGuard guard, short input, [InvokerParameterName] string parameterName, string message = null)
+		public static short NegativeOrZero(this IGuard guard, short input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			return NegativeOrZero(input, parameterName, message);
 		}
@@ -47,7 +48,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative or zero.</exception>
-		public static int NegativeOrZero(this IGuard guard, int input, [InvokerParameterName] string parameterName, string message = null)
+		public static int NegativeOrZero(this IGuard guard, int input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			return NegativeOrZero(input, parameterName, message);
 		}
@@ -61,7 +62,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative or zero.</exception>
-		public static long NegativeOrZero(this IGuard guard, long input, [InvokerParameterName] string parameterName, string message = null)
+		public static long NegativeOrZero(this IGuard guard, long input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			return NegativeOrZero(input, parameterName, message);
 		}
@@ -75,7 +76,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative or zero.</exception>
-		public static decimal NegativeOrZero(this IGuard guard, decimal input, [InvokerParameterName] string parameterName, string message = null)
+		public static decimal NegativeOrZero(this IGuard guard, decimal input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			return NegativeOrZero(input, parameterName, message);
 		}
@@ -89,7 +90,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative or zero.</exception>
-		public static float NegativeOrZero(this IGuard guard, float input, [InvokerParameterName] string parameterName, string message = null)
+		public static float NegativeOrZero(this IGuard guard, float input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			return NegativeOrZero(input, parameterName, message);
 		}
@@ -103,7 +104,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative or zero.</exception>
-		public static double NegativeOrZero(this IGuard guard, double input, [InvokerParameterName] string parameterName, string message = null)
+		public static double NegativeOrZero(this IGuard guard, double input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			return NegativeOrZero(input, parameterName, message);
 		}
@@ -117,7 +118,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative or zero.</exception>
-		public static TimeSpan NegativeOrZero(this IGuard guard, TimeSpan input, [InvokerParameterName] string parameterName, string message = null)
+		public static TimeSpan NegativeOrZero(this IGuard guard, TimeSpan input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			return NegativeOrZero(input, parameterName, message);
 		}
