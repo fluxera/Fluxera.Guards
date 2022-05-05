@@ -66,32 +66,19 @@ stages:
     pool:
       name: Default
     steps:
-    - task: NuGetAuthenticate@0
-      displayName: "Authenticate NuGet"
+    # Download the created packages.
+    - task: DownloadBuildArtifacts@0
+      displayName: 'Download NuGet Packges'
       inputs:
-        nuGetServiceConnections: 'fluxera-nuget-org'
-        forceReinstallCredentialProvider: true
-    - task: DotNetCoreCLI@2
-      displayName: 'Publish NuGet Packages'
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'packages'
+        downloadPath: '$(System.ArtifactsDirectory)'
+    # Publish the NuGet packages to the package feed.
+    - task: NuGetCommand@2
+      displayName: 'Publish NuGet Packges'
       inputs:
         command: 'push'
         packagesToPush: '$(System.ArtifactsDirectory)/**/*.nupkg'
         nuGetFeedType: 'external'
         publishFeedCredentials: 'fluxera-nuget-org'
-
-#    # Download the created packages.
-#    - task: DownloadBuildArtifacts@0
-#      displayName: 'Download NuGet Packges'
-#      inputs:
-#        buildType: 'current'
-#        downloadType: 'single'
-#        artifactName: 'packages'
-#        downloadPath: '$(System.ArtifactsDirectory)'
-#    # Publish the NuGet packages to the package feed.
-#    - task: NuGetCommand@2
-#      displayName: 'Publish NuGet Packges'
-#      inputs:
-#        command: 'push'
-#        packagesToPush: '$(System.ArtifactsDirectory)/**/*.nupkg'
-#        nuGetFeedType: 'external'
-#        publishFeedCredentials: 'fluxera-nuget-org'
