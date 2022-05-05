@@ -54,7 +54,7 @@ stages:
       displayName: 'Publish Package Artifacts'
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
+        ArtifactName: 'packages'
         publishLocation: 'Container'
 
 - stage: PublishPackages
@@ -62,10 +62,15 @@ stages:
   # Only publish packages for main branch.
   condition: and(succeeded('BuildAndTest'), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   jobs:
-  - deployment: PublishPackages
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: drop
-            artifact: '$(System.ArtifactsDirectory)'
+  - job: PublishPackages
+    pool:
+      name: Default
+    steps:
+    # Download the created packages.
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'packages'
+        downloadPath: '$(System.ArtifactsDirectory)'
+    # Publish the NuGet packages to the package feed.
