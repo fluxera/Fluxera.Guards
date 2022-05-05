@@ -56,3 +56,16 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
         publishLocation: 'Container'
+
+- stage: PublishPackages
+  dependsOn: BuildAndTest
+  # Only publish packages for main branch.
+  condition: and(succeeded('BuildAndTest'), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  jobs:
+  - deployment: PublishPackages
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: drop
+            artifact: '$(System.ArtifactsDirectory)'
