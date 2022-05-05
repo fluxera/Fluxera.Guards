@@ -76,17 +76,9 @@ stages:
         downloadPath: '$(System.ArtifactsDirectory)'
     # Publish the NuGet packages to the package feed.
     - task: NuGetCommand@2
+      displayName: 'Publish NuGet Packges'
       inputs:
         command: 'push'
-        packagesToPush: '''$(System.ArtifactsDirectory)/**/*.nupkg'
+        packagesToPush: '$(System.ArtifactsDirectory)/**/*.nupkg'
         nuGetFeedType: 'external'
         publishFeedCredentials: 'fluxera-nuget-org'
-
-#    - task: DotNetCoreCLI@2
-#      displayName: 'Publish NuGet Packges'
-#      inputs:
-#        command: 'push'
-#        packagesToPush: '$(System.ArtifactsDirectory)/**/*.nupkg'
-#        nuGetFeedType: 'external'
-#        publishFeedCredentials: 'fluxera-nuget-org'
-#        includesymbols: false
