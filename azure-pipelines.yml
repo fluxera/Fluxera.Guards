@@ -68,9 +68,18 @@ stages:
     steps:
     # Download the created packages.
     - task: DownloadBuildArtifacts@0
+      displayName: 'Download NuGet Packges'
       inputs:
         buildType: 'current'
         downloadType: 'single'
         artifactName: 'packages'
         downloadPath: '$(System.ArtifactsDirectory)'
     # Publish the NuGet packages to the package feed.
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish NuGet Packges'
+      inputs:
+        command: 'push'
+        packagesToPush: '$(System.ArtifactsDirectory)/**/*.nupkg'
+        nuGetFeedType: 'external'
+        publishFeedCredentials: 'fluxera-nuget-org'
+        includesymbols: false
