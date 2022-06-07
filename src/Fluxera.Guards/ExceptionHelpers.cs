@@ -4,6 +4,9 @@
 	using System.ComponentModel;
 	using JetBrains.Annotations;
 
+	/// <summary>
+	///     Helpers to create the exception instances.
+	/// </summary>
 	[PublicAPI]
 	public static class ExceptionHelpers
 	{

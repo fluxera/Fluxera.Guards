@@ -1,6 +1,6 @@
 ﻿namespace Fluxera.Guards.UnitTests
 {
-	public enum TestEnum : int
+	public enum TestEnum
 	{
 		One = 0,
 		Two = 1,

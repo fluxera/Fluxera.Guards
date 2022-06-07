@@ -52,7 +52,7 @@
 		[ContractAnnotation("input:null => halt")]
 		public static T Default<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
-			if(EqualityComparer<T>.Default.Equals(input, default!) || input is null)
+			if(EqualityComparer<T>.Default.Equals(input, default) || input is null)
 			{
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be default.");
 			}
@@ -149,7 +149,7 @@
 		public static Guid NullOrEmpty(this IGuard guard, Guid? input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			Guard.Against.Null(input, parameterName);
-			Guard.Against.Empty(input!.Value, parameterName);
+			Guard.Against.Empty(input.Value, parameterName);
 
 			return input.Value;
 		}
@@ -177,7 +177,7 @@
 				throw CreateArgumentException(parameterName, message ?? "Enumerable cannot be empty.");
 			}
 
-			return input!;
+			return input;
 			// ReSharper enable PossibleMultipleEnumeration
 		}
 	}
