@@ -32,7 +32,7 @@
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be false.");
 			}
 
-			return input;
+			return true;
 		}
 
 		/// <summary>
@@ -54,7 +54,7 @@
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be true.");
 			}
 
-			return input;
+			return false;
 		}
 
 		/// <summary>

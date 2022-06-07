@@ -1,4 +1,5 @@
 ﻿// ReSharper disable once CheckNamespace
+
 namespace Fluxera.Guards
 {
 	// Note: Using the namespace 'Fluxera.Guard' will ensure that your
@@ -9,7 +10,7 @@ namespace Fluxera.Guards
 
 	public static class CustomGuardExtensions
 	{
-		public static void Hello(this IGuard guard, string input, [InvokerParameterName] string parameterName, string? message = null)
+		public static void Hello(this IGuard guard, string input, [InvokerParameterName] string parameterName, string message = null)
 		{
 			if(input.ToLower() == "hello")
 			{

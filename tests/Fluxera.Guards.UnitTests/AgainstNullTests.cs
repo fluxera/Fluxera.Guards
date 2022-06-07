@@ -160,7 +160,7 @@
 		[Test]
 		public void ShouldThrowWhenNull()
 		{
-			Action action = () => Guard.Against.Null((object?)null, "object");
+			Action action = () => Guard.Against.Null((object)null, "object");
 			action.Should().Throw<ArgumentNullException>().WithParameterName("object");
 		}
 
@@ -182,7 +182,7 @@
 		[Test]
 		public void ShouldThrowWhenNullString()
 		{
-			Action action = () => Guard.Against.NullOrEmpty((string?)null, "string");
+			Action action = () => Guard.Against.NullOrEmpty((string)null, "string");
 			action.Should().Throw<ArgumentNullException>().WithParameterName("string");
 		}
 
