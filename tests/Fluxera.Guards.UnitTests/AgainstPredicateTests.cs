@@ -36,13 +36,13 @@
 		[TestCaseSource(nameof(CorrectFormatTestCases))]
 		public void ShouldDoNothingWhenFormatIsCorrect_Obsolete(string input, string regexPattern)
 		{
-			Guard.Against.InvalidFormat(input, nameof(input), regexPattern);
+			Guard.Against.InvalidFormat(input, regexPattern);
 		}
 
 		[Test]
 		public void ShouldDoNothingWhenPredicateSatisfied()
 		{
-			Guard.Against.InvalidInput("hallo", "string", i => i.StartsWith("h"));
+			Guard.Against.InvalidInput("hallo", i => i.StartsWith("h"), "string");
 		}
 
 		[Test]
@@ -56,14 +56,14 @@
 		{
 			Guard.Against.False(true, "bool").Should().BeTrue();
 			Guard.Against.True(false, "bool").Should().BeFalse();
-			Guard.Against.InvalidInput("hallo", "string", i => i.StartsWith("h")).Should().Be("hallo");
+			Guard.Against.InvalidInput("hallo", i => i.StartsWith("h"), "string").Should().Be("hallo");
 		}
 
 		[Test]
 		[TestCaseSource(nameof(CorrectFormatTestCases))]
 		public void ShouldReturnInputOnSuccessFormat(string input, string regexPattern)
 		{
-			Guard.Against.InvalidFormat(input, nameof(input), regexPattern).Should().Be(input);
+			Guard.Against.InvalidFormat(input, regexPattern).Should().Be(input);
 		}
 
 		[Test]
@@ -86,14 +86,14 @@
 		[TestCaseSource(nameof(IncorrectFormatTestCases))]
 		public void ShouldThrowWhenFormatIsIncorrect_Obsolete(string input, string regexPattern)
 		{
-			Action action = () => Guard.Against.InvalidFormat(input, nameof(input), regexPattern);
+			Action action = () => Guard.Against.InvalidFormat(input, regexPattern);
 			action.Should().Throw<ArgumentException>().WithParameterName("input");
 		}
 
 		[Test]
 		public void ShouldThrowWhenPredicateIsNotSatisfied()
 		{
-			Action action = () => Guard.Against.InvalidInput("hallo", "string", i => i.StartsWith("x"));
+			Action action = () => Guard.Against.InvalidInput("hallo", i => i.StartsWith("x"), "string");
 			action.Should().Throw<ArgumentException>().WithParameterName("string");
 		}
 

@@ -83,42 +83,20 @@
 		}
 
 		/// <summary>
-		///     Throws an <see cref="ArgumentException" /> if <paramref name="input" /> doesn't satisfy the
-		///     <paramref name="predicate" /> function.
-		/// </summary>
-		/// <typeparam name="T">The type of the input.</typeparam>
-		/// <param name="guard">The extension endpoint.</param>
-		/// <param name="input">The value of the input.</param>
-		/// <param name="parameterName">The name of the input parameter.</param>
-		/// <param name="predicate">The predicate function to satisfy.</param>
-		/// <param name="message">The optional custom error message.</param>
-		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
-		/// <exception cref="ArgumentException">
-		///     Thrown if <paramref name="input" /> doesn't satisfy the
-		///     <paramref name="predicate" /> function.
-		/// </exception>
-		[Obsolete("Will be removed in v7.0.")]
-		public static T InvalidInput<T>(this IGuard guard, T input, [InvokerParameterName] string parameterName, Predicate<T> predicate, string message = null)
-		{
-			return guard.InvalidInput(input, predicate, parameterName, message);
-		}
-
-		/// <summary>
 		///     Throws an <see cref="ArgumentException" /> if <paramref name="input" /> doesn't match the
 		///     regular expression of <paramref name="regexPattern" />.
 		/// </summary>
 		/// <param name="guard">The extension endpoint.</param>
 		/// <param name="input">The value of the input.</param>
-		/// <param name="parameterName">The name of the input parameter.</param>
 		/// <param name="regexPattern">The regex pattern to match.</param>
+		/// <param name="parameterName">The name of the input parameter.</param>
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">
 		///     Thrown if <paramref name="input" /> doesn't match the
 		///     <paramref name="regexPattern" />.
 		/// </exception>
-		[Obsolete("Will be removed in v7.0.")]
-		public static string InvalidFormat(this IGuard guard, string input, [InvokerParameterName] string parameterName, [RegexPattern] string regexPattern, string message = null)
+		public static string InvalidFormat(this IGuard guard, string input, [RegexPattern] string regexPattern, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
 			if(input != Regex.Match(input, regexPattern).Value)
 			{
@@ -127,7 +105,5 @@
 
 			return input;
 		}
-
-		// TODO: Create CallerArgumentExpression version for InvalidFormat in v7
 	}
 }

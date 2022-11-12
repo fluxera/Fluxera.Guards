@@ -59,21 +59,21 @@
 		[TestCaseSource(nameof(InRangeTestCases))]
 		public void ShouldDoNothingWhenInRange_Obsolete(IComparable input, IComparable from, IComparable to)
 		{
-			Guard.Against.OutOfRange(Convert.ToByte(input), nameof(input), Convert.ToByte(from), Convert.ToByte(to));
-			Guard.Against.OutOfRange(Convert.ToInt16(input), nameof(input), Convert.ToInt16(from), Convert.ToInt16(to));
-			Guard.Against.OutOfRange(Convert.ToInt32(input), nameof(input), Convert.ToInt32(from), Convert.ToInt32(to));
-			Guard.Against.OutOfRange(Convert.ToInt64(input), nameof(input), Convert.ToInt64(from), Convert.ToInt64(to));
-			Guard.Against.OutOfRange(Convert.ToDecimal(input), nameof(input), Convert.ToDecimal(from), Convert.ToDecimal(to));
-			Guard.Against.OutOfRange(Convert.ToSingle(input), nameof(input), Convert.ToSingle(from), Convert.ToSingle(to));
-			Guard.Against.OutOfRange(Convert.ToDouble(input), nameof(input), Convert.ToDouble(from), Convert.ToDouble(to));
-			Guard.Against.OutOfRange(TimeSpan.FromSeconds(Convert.ToInt32(input)), nameof(input), TimeSpan.FromSeconds(Convert.ToDouble(from)), TimeSpan.FromSeconds(Convert.ToDouble(to)));
+			Guard.Against.OutOfRange(Convert.ToByte(input), Convert.ToByte(from), Convert.ToByte(to));
+			Guard.Against.OutOfRange(Convert.ToInt16(input), Convert.ToInt16(from), Convert.ToInt16(to));
+			Guard.Against.OutOfRange(Convert.ToInt32(input), Convert.ToInt32(from), Convert.ToInt32(to));
+			Guard.Against.OutOfRange(Convert.ToInt64(input), Convert.ToInt64(from), Convert.ToInt64(to));
+			Guard.Against.OutOfRange(Convert.ToDecimal(input), Convert.ToDecimal(from), Convert.ToDecimal(to));
+			Guard.Against.OutOfRange(Convert.ToSingle(input), Convert.ToSingle(from), Convert.ToSingle(to));
+			Guard.Against.OutOfRange(Convert.ToDouble(input), Convert.ToDouble(from), Convert.ToDouble(to));
+			Guard.Against.OutOfRange(TimeSpan.FromSeconds(Convert.ToInt32(input)), TimeSpan.FromSeconds(Convert.ToDouble(from)), TimeSpan.FromSeconds(Convert.ToDouble(to)));
 		}
 
 		[Test]
 		[TestCaseSource(nameof(InRangeTestCases))]
 		public void ShouldReturnInputOnSuccess(int input, int from, int to)
 		{
-			Guard.Against.OutOfRange(input, nameof(input), from, to).Should().Be(input);
+			Guard.Against.OutOfRange(input, from, to).Should().Be(input);
 		}
 
 		[Test]
@@ -83,7 +83,7 @@
 			DateTime from = input.AddSeconds(30);
 			DateTime to = input.AddSeconds(60);
 
-			Action action = () => Guard.Against.OutOfRange(input, nameof(input), from, to);
+			Action action = () => Guard.Against.OutOfRange(input, from, to);
 			action.Should().Throw<ArgumentException>();
 		}
 
@@ -101,14 +101,14 @@
 		[TestCaseSource(nameof(OutOfRangeTestCases))]
 		public void ShouldThrowWhenOutOfRang_Obsolete(IComparable input, IComparable from, IComparable to)
 		{
-			((Action)(() => Guard.Against.OutOfRange(Convert.ToByte(input), nameof(input), Convert.ToByte(from), Convert.ToByte(to)))).Should().Throw<ArgumentOutOfRangeException>();
-			((Action)(() => Guard.Against.OutOfRange(Convert.ToInt16(input), nameof(input), Convert.ToInt16(from), Convert.ToInt16(to)))).Should().Throw<ArgumentOutOfRangeException>();
-			((Action)(() => Guard.Against.OutOfRange(Convert.ToInt32(input), nameof(input), Convert.ToInt32(from), Convert.ToInt32(to)))).Should().Throw<ArgumentOutOfRangeException>();
-			((Action)(() => Guard.Against.OutOfRange(Convert.ToInt64(input), nameof(input), Convert.ToInt64(from), Convert.ToInt64(to)))).Should().Throw<ArgumentOutOfRangeException>();
-			((Action)(() => Guard.Against.OutOfRange(Convert.ToDecimal(input), nameof(input), Convert.ToDecimal(from), Convert.ToDecimal(to)))).Should().Throw<ArgumentOutOfRangeException>();
-			((Action)(() => Guard.Against.OutOfRange(Convert.ToSingle(input), nameof(input), Convert.ToSingle(from), Convert.ToSingle(to)))).Should().Throw<ArgumentOutOfRangeException>();
-			((Action)(() => Guard.Against.OutOfRange(Convert.ToDouble(input), nameof(input), Convert.ToDouble(from), Convert.ToDouble(to)))).Should().Throw<ArgumentOutOfRangeException>();
-			((Action)(() => Guard.Against.OutOfRange(TimeSpan.FromSeconds(Convert.ToInt32(input)), nameof(input), TimeSpan.FromSeconds(Convert.ToDouble(from)), TimeSpan.FromSeconds(Convert.ToDouble(to))))).Should().Throw<ArgumentOutOfRangeException>();
+			((Action)(() => Guard.Against.OutOfRange(Convert.ToByte(input), Convert.ToByte(from), Convert.ToByte(to)))).Should().Throw<ArgumentOutOfRangeException>();
+			((Action)(() => Guard.Against.OutOfRange(Convert.ToInt16(input), Convert.ToInt16(from), Convert.ToInt16(to)))).Should().Throw<ArgumentOutOfRangeException>();
+			((Action)(() => Guard.Against.OutOfRange(Convert.ToInt32(input), Convert.ToInt32(from), Convert.ToInt32(to)))).Should().Throw<ArgumentOutOfRangeException>();
+			((Action)(() => Guard.Against.OutOfRange(Convert.ToInt64(input), Convert.ToInt64(from), Convert.ToInt64(to)))).Should().Throw<ArgumentOutOfRangeException>();
+			((Action)(() => Guard.Against.OutOfRange(Convert.ToDecimal(input), Convert.ToDecimal(from), Convert.ToDecimal(to)))).Should().Throw<ArgumentOutOfRangeException>();
+			((Action)(() => Guard.Against.OutOfRange(Convert.ToSingle(input), Convert.ToSingle(from), Convert.ToSingle(to)))).Should().Throw<ArgumentOutOfRangeException>();
+			((Action)(() => Guard.Against.OutOfRange(Convert.ToDouble(input), Convert.ToDouble(from), Convert.ToDouble(to)))).Should().Throw<ArgumentOutOfRangeException>();
+			((Action)(() => Guard.Against.OutOfRange(TimeSpan.FromSeconds(Convert.ToInt32(input)), TimeSpan.FromSeconds(Convert.ToDouble(from)), TimeSpan.FromSeconds(Convert.ToDouble(to))))).Should().Throw<ArgumentOutOfRangeException>();
 		}
 
 		[Test]
