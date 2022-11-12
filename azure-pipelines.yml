@@ -14,7 +14,7 @@ stages:
   jobs:
   - job: BuildAndTest
     pool:
-      name: Windows-Default
+      name: "Windows-Default"
     steps:
     - checkout: self
       persistCredentials: 'true'
