@@ -27,6 +27,8 @@
 		[ContractAnnotation("input:false => halt")]
 		public static bool False(this IGuard guard, bool input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			if(!input)
 			{
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be false.");
@@ -49,6 +51,8 @@
 		[ContractAnnotation("input:true => halt")]
 		public static bool True(this IGuard guard, bool input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			if(input)
 			{
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be true.");
@@ -74,6 +78,8 @@
 		/// </exception>
 		public static T InvalidInput<T>(this IGuard guard, T input, Predicate<T> predicate, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			if(!predicate(input))
 			{
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be satisfy the predicate.");
@@ -98,6 +104,8 @@
 		/// </exception>
 		public static string InvalidFormat(this IGuard guard, string input, [RegexPattern] string regexPattern, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			if(input != Regex.Match(input, regexPattern).Value)
 			{
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be matched by the regex.");
