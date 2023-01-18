@@ -29,6 +29,8 @@
 		[ContractAnnotation("input:null => halt")]
 		public static T Null<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			if(input is null)
 			{
 				throw CreateArgumentNullException(parameterName, message);
@@ -52,6 +54,8 @@
 		[ContractAnnotation("input:null => halt")]
 		public static T Default<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			if(EqualityComparer<T>.Default.Equals(input, default) || input is null)
 			{
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be default.");
@@ -67,7 +71,7 @@
 		/// <param name="guard">The extension endpoint.</param>
 		/// <param name="input">The value of the input.</param>
 		/// <param name="parameterName">The name of the input parameter.</param>
-		/// <param name="message">TThe optional custom error message.</param>
+		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentNullException">Thrown if <paramref name="input" /> is null.</exception>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is an empty string.</exception>
@@ -76,6 +80,8 @@
 		[ContractAnnotation("input:null => halt")]
 		public static string NullOrEmpty(this IGuard guard, string input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			Guard.Against.Null(input, parameterName);
 			if(string.IsNullOrEmpty(input))
 			{
@@ -101,6 +107,8 @@
 		[ContractAnnotation("input:null => halt")]
 		public static string NullOrWhiteSpace(this IGuard guard, string input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			Guard.Against.NullOrEmpty(input, parameterName);
 			if(string.IsNullOrWhiteSpace(input))
 			{
@@ -124,6 +132,8 @@
 		[ContractAnnotation("input:null => halt")]
 		public static Guid Empty(this IGuard guard, Guid input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			if(input == Guid.Empty)
 			{
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be empty.");
@@ -148,6 +158,8 @@
 		[ContractAnnotation("input:null => halt")]
 		public static Guid NullOrEmpty(this IGuard guard, Guid? input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			Guard.Against.Null(input, parameterName);
 			Guard.Against.Empty(input.Value, parameterName);
 
@@ -170,6 +182,8 @@
 		[ContractAnnotation("input:null => halt")]
 		public static IEnumerable<T> NullOrEmpty<T>(this IGuard guard, IEnumerable<T> input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			// ReSharper disable PossibleMultipleEnumeration
 			Guard.Against.Null(input, parameterName);
 			if(!input.Any())

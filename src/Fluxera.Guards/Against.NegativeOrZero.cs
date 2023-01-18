@@ -21,9 +21,10 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative or zero.</exception>
-		public static T NegativeOrZero<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
-			where T : INumber<T>
+		public static T NegativeOrZero<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null) where T : INumber<T>
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			if(T.IsNegative(input) || T.IsZero(input))
 			{
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be negative or zero.");
@@ -43,6 +44,8 @@
 		/// <exception cref="ArgumentException">Thrown if <paramref name="input" /> is negative or zero.</exception>
 		public static TimeSpan NegativeOrZero(this IGuard guard, TimeSpan input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
 		{
+			ArgumentNullException.ThrowIfNull(guard);
+
 			if(input <= TimeSpan.Zero)
 			{
 				throw CreateArgumentException(parameterName, message ?? "Value cannot be negative or zero.");
