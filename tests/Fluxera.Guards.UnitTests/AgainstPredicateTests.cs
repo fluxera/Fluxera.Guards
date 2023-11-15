@@ -1,4 +1,5 @@
-﻿namespace Fluxera.Guards.UnitTests
+﻿// ReSharper disable ConditionIsAlwaysTrueOrFalse
+namespace Fluxera.Guards.UnitTests
 {
 	using System;
 	using System.Collections.Generic;
