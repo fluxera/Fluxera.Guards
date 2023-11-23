@@ -29,7 +29,7 @@
 	</PropertyGroup>
 
 	
-	<Target Name="Update Version" BeforeTargets="BeforeBuild" Condition="'$(TF_BUILD)' == 'true'">
+	<Target Name="Update Version" BeforeTargets="DispatchToInnerBuilds" Condition="'$(TF_BUILD)' == 'true'">
 		<Message Text="Version = $(GITVERSION_FullSemVer)" Importance="High" />
 		<Message Text="##vso[build.updatebuildnumber]$(GITVERSION_FullSemVer)" Importance="High" />
 	</Target>
