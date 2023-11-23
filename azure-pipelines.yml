@@ -5,8 +5,8 @@ trigger:
 
 variables:
   BuildConfiguration: Release
-  DotNetCoreVersionPrevious: 7
-  DotNetCoreVersionLatest: 8
+  DotNetCoreVersionPrevious: 7.x
+  DotNetCoreVersionLatest: 8.x
 
 parameters:
 - name: publishPackages
