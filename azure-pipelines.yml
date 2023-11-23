@@ -5,7 +5,8 @@ trigger:
 
 variables:
   BuildConfiguration: Release
-  DotNetCoreVersion: 8.0.x
+  DotNetCoreVersionPrevious: 7.0.x
+  DotNetCoreVersionLatest: 8.0.x
 
 parameters:
 - name: publishPackages
@@ -29,8 +30,14 @@ stages:
       displayName: 'Acquire .NET SDK'
       inputs:
         packageType: 'sdk'
-        version: $(DotNetCoreVersion)
+        version: $(DotNetCoreVersionPrevious)
         includePreviewVersions: false   
+    - task: UseDotNet@2
+      displayName: 'Acquire .NET SDK'
+      inputs:
+        packageType: 'sdk'
+        version: $(DotNetCoreVersionLatest)
+        includePreviewVersions: false  
     # Build all projects.
     - task: DotNetCoreCLI@2
       displayName: 'Build Projects'
