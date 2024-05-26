@@ -30,7 +30,7 @@
 		///     Thrown if <paramref name="input" /> &lt; <paramref name="from" /> or
 		///     <paramref name="input" /> &gt; <paramref name="to" />.
 		/// </exception>
-		public static T OutOfRange<T>(this IGuard guard, T input, T from, T to, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null) where T : IComparable, IComparable<T>
+		public static T OutOfRange<T>(this IGuard guard, T input, T from, T to, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null) where T : IComparable, IComparable<T>
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -57,7 +57,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="InvalidEnumArgumentException">Thrown if <paramref name="input" /> is not a valid enum value.</exception>
-		public static T OutOfRange<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null) where T : struct, Enum
+		public static T OutOfRange<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null) where T : struct, Enum
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -79,7 +79,7 @@
 		/// <param name="message">The optional custom error message.</param>
 		/// <returns>The <paramref name="input" />, if the checks were successful.</returns>
 		/// <exception cref="InvalidEnumArgumentException">Thrown if <paramref name="input" /> is not a valid enum value.</exception>
-		public static int OutOfRange<T>(this IGuard guard, int input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null) where T : struct, Enum
+		public static int OutOfRange<T>(this IGuard guard, int input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null) where T : struct, Enum
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
