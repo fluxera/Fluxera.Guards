@@ -25,7 +25,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:false => halt")]
-		public static bool False(this IGuard guard, bool input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static bool False(this IGuard guard, bool input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -49,7 +49,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:true => halt")]
-		public static bool True(this IGuard guard, bool input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static bool True(this IGuard guard, bool input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -76,7 +76,7 @@
 		///     Thrown if <paramref name="input" /> doesn't satisfy the
 		///     <paramref name="predicate" /> function.
 		/// </exception>
-		public static T InvalidInput<T>(this IGuard guard, T input, Predicate<T> predicate, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static T InvalidInput<T>(this IGuard guard, T input, Predicate<T> predicate, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -102,7 +102,7 @@
 		///     Thrown if <paramref name="input" /> doesn't match the
 		///     <paramref name="regexPattern" />.
 		/// </exception>
-		public static string InvalidFormat(this IGuard guard, string input, [RegexPattern] string regexPattern, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static string InvalidFormat(this IGuard guard, string input, [RegexPattern] string regexPattern, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 

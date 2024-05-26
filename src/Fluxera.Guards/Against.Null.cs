@@ -27,7 +27,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static T Null<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static T Null<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -52,7 +52,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static T Default<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static T Default<T>(this IGuard guard, T input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -78,7 +78,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static string NullOrEmpty(this IGuard guard, string input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static string NullOrEmpty(this IGuard guard, string input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -105,7 +105,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static string NullOrWhiteSpace(this IGuard guard, string input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static string NullOrWhiteSpace(this IGuard guard, string input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -130,7 +130,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static Guid Empty(this IGuard guard, Guid input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static Guid Empty(this IGuard guard, Guid input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -156,7 +156,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static Guid NullOrEmpty(this IGuard guard, Guid? input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static Guid NullOrEmpty(this IGuard guard, Guid? input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
@@ -180,7 +180,7 @@
 		[DebuggerNonUserCode]
 		[DebuggerStepThrough]
 		[ContractAnnotation("input:null => halt")]
-		public static IEnumerable<T> NullOrEmpty<T>(this IGuard guard, IEnumerable<T> input, [InvokerParameterName] [CallerArgumentExpression("input")] string parameterName = null, string message = null)
+		public static IEnumerable<T> NullOrEmpty<T>(this IGuard guard, IEnumerable<T> input, [InvokerParameterName] [CallerArgumentExpression(nameof(input))] string parameterName = null, string message = null)
 		{
 			ArgumentNullException.ThrowIfNull(guard);
 
