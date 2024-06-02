@@ -16,8 +16,8 @@
 
 	<PropertyGroup>
 		<Authors>Matthias Gernand</Authors>
-		<RepositoryUrl>https://github.com/fluxera/Fluxera.Guard</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/fluxera/Fluxera.Guard</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/fluxera/Fluxera.Guards</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/fluxera/Fluxera.Guards</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
