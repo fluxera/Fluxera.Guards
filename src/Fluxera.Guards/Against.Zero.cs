@@ -1,8 +1,12 @@
 ﻿namespace Fluxera.Guards
 {
 	using System;
+#if NET6_0
 	using System.Collections.Generic;
+#endif
+#if NET7_0_OR_GREATER
 	using System.Numerics;
+#endif
 	using System.Runtime.CompilerServices;
 	using JetBrains.Annotations;
 	using static ExceptionHelpers;
